@@ -1,10 +1,11 @@
+import React from 'react';
 import './App.css';
 
 import { useNavigate } from 'react-router-dom';
 
 export function App() {
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div>
