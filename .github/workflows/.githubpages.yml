@@ -9,7 +9,6 @@ on:
 permissions:
   contents: read
   pages: write
-  # deployments: write
   id-token: write
 
 jobs:
@@ -44,13 +43,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: github-pages
-      # url: ${{ steps.deployment.outputs.page_url }}
+      name: github-pages # see https://github.com/actions/deploy-pages/issues/9
 
-    # see https://github.com/actions/deploy-pages/issues/9
     steps:
     - name: Deploy to GitHub Pages
-      # id: deployment
       uses: actions/deploy-pages@v1-beta
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
