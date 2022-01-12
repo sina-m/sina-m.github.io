@@ -26,8 +26,8 @@ jobs:
 
     - name: Archive
       run: |
-      touch artifact.tar
-      tar --directory build --dereference --hard-dereference -cvf artifact.tar --exclude=.git --exclude=artifact.tar
+        touch artifact.tar
+        tar --directory build --dereference --hard-dereference -cvf artifact.tar --exclude=.git --exclude=artifact.tar
 
     - name: Upload artifact
       using: actions/upload-artifact@main
@@ -39,7 +39,7 @@ jobs:
     # - name: Deploy
     #   uses: JamesIves/github-pages-deploy-action@v4.2.2
     #   with:
-    #     brach: gh-pages
+    #     branch: gh-pages
     #     folder: build
 
     # - name: setup git
