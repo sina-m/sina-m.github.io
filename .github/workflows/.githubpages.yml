@@ -9,7 +9,7 @@ on:
 permissions:
   contents: read
   pages: write
-  # deployments: write 
+  # deployments: write
   id-token: write
 
 jobs:
@@ -31,8 +31,7 @@ jobs:
         npm run build
 
     - name: Archive
-      run: |
-        touch artifact.tar && tar --dereference --hard-dereference -cvf artifact.tar --exclude=.git --exclude=artifact.tar build
+      run: tar --dereference --hard-dereference --directory build/ -cvf artifact.tar .
 
     - name: Upload artifact
       uses: actions/upload-artifact@main
