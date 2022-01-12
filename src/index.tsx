@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter,
@@ -11,10 +10,10 @@ import {
 import { Home } from './components/Home'
 import { About } from './components/About'
 
-
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
+      <Route path='\' element={<Home />} />
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
     </Routes>
