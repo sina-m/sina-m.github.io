@@ -40,9 +40,9 @@ jobs:
     needs: build
     permissions:
       # id-token: read
-      Contents: read
-      Metadata: read
-      Pages: write
+      contents: read
+      metadata: read
+      pages: write
 
     steps:
     - name: Deploy to GitHub Pages
