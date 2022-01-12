@@ -26,8 +26,7 @@ jobs:
 
     - name: Archive
       run: |
-        touch artifact.tar
-        tar --directory build --dereference --hard-dereference -cvf artifact.tar --exclude=.git --exclude=artifact.tar
+        touch artifact.tar && tar --directory ./build --dereference --hard-dereference -cvf artifact.tar --exclude=.git --exclude=artifact.tar
 
     - name: Upload artifact
       uses: actions/upload-artifact@main
