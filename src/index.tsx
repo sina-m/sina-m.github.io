@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import { render } from "react-dom";
 import {
   BrowserRouter,
   Routes,
@@ -19,11 +17,6 @@ ReactDOM.render(
     <Routes>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
-      {/* <Route path="/" element={<App />}>
-        <Route index element={<Home />} />
-        <Route path="about" element={<About />}>
-        </Route>
-      </Route> */}
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')
