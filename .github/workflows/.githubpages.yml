@@ -33,7 +33,7 @@ jobs:
     - name: commit
       run: |
         # Stage the file, commit and push
-        git add build
+        git add -f build
         git commit -m "pages"
         git push origin gh-pages  
     # - name: Upload artifact for deployment job
