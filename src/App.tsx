@@ -9,7 +9,7 @@ export function App() {
 
   return (
     <div>
-      <button onClick={() => navigate('/about')}>About?</button>
+      <button onClick={() => navigate('/projects')}>Projects</button>
     </div>
   );
 }

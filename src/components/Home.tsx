@@ -3,14 +3,16 @@ import { Link } from "react-router-dom";
 
 
 export function Home() {
-  console.log('wtf')
   return (
     <div>
-      <h1>Home</h1>
+      <h1>About</h1>
       <nav>
-        <Link to="/">Home</Link> | {" "}
-        <Link to="/about">About</Link>
+        <Link to="/"><b>About</b></Link> | {" "}
+        <Link to="/projects">Projects</Link>
       </nav>
+      <p>
+      ¯\_(ツ)_/¯
+      </p>
     </div>
   );
 }
