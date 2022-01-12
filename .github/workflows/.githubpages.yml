@@ -30,7 +30,7 @@ jobs:
         tar --directory build --dereference --hard-dereference -cvf artifact.tar --exclude=.git --exclude=artifact.tar
 
     - name: Upload artifact
-      using: actions/upload-artifact@main
+      uses: actions/upload-artifact@main
       with:
         name: github-pages
         path: ./artifact.tar
