@@ -1,22 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
 
-import { Home } from './components/Home'
-import { Projects } from './components/Projects'
+import App from './App';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path='\' element={<Home />} />
-      <Route path="projects" element={<Projects />} />
-    </Routes>
-  </BrowserRouter>,
+  <App />,
   document.getElementById('root')
 );
 

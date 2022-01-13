@@ -25,7 +25,7 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "webpack serve --open",
+    "start": "webpack serve --open --mode development",
     "build": "webpack --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -52,6 +52,7 @@
     "@types/webpack": "^5.28.0",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
+    "css-loader": "^6.5.1",
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",

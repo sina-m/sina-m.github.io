@@ -19,13 +19,17 @@ const config: Configuration = {
           },
         },
       },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
     ],
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js" ],
   },
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "public"),
     filename: "bundle.js",
   },
 };
