@@ -1,84 +1,94 @@
+import './App.css';
+
 import React, { useEffect, useState } from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd';
-import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+import { Layout, Menu, Breadcrumb, Grid } from 'antd';
 import { MenuInfo } from 'rc-menu/lib/interface';
 
 import { Home } from './components/Home';
-import { Projects } from './components/Projects';
+import { Projects } from './components/Projects/Projects';
 import Logo from './resources/profile.svg';
 
-import './App.css';
 
-const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+const { Header, Sider } = Layout;
+
+export enum Pages {
+  Home = 'Home',
+  Projects = 'Projects'
+}
 
 export function App() {
 
-  const [menuItem, setMenuItem] = useState('1');
+  const [menuItem, setMenuItem] = useState(Pages.Home);
   const [page, setPage] = useState<JSX.Element>();
+  const [breadCrumbs, setBreadCrumbs] = useState<string[]>([]);
+
+  const screens = Grid.useBreakpoint();
+
+  const MenuItems = (type: 'inline' | 'horizontal'): JSX.Element => {
+    return (
+      <>
+        <img className='logos' src={Logo} alt="Logo" />
+        <Menu mode={type} defaultSelectedKeys={[menuItem]}>
+          <Menu.Item key={Pages.Home} onClick={menuOnClick}>Home</Menu.Item>
+          <Menu.Item key={Pages.Projects} onClick={menuOnClick}>Projects</Menu.Item>
+        </Menu>
+      </>
+    )
+  }
 
   useEffect(() => {
     switch (menuItem) {
-      case '1':
+      case Pages.Home:
         setPage(<Home />);
         break;
-      case '2':
-        setPage(<Projects />);
+      case Pages.Projects:
+        setPage(<Projects setBreadCrumbs={setBreadCrumbs} />);
         break;
       default:
         break;
     }
+    setBreadCrumbs([menuItem]);
   }, [menuItem])
 
 
   function menuOnClick(info: MenuInfo): void {
-    setMenuItem(info.key)
-    // switch (info.key) {
-    //   case '1':
-    //     setPage(<Home />);
-    //     break;
-    //   case '2':
-    //     setPage(<Projects />);
-    //     break;
-    //   default:
-    //     break;
-    // }
+    setMenuItem(info.key as Pages)
   }
+  useEffect(() => {
+    console.log(screens)
+  }, [screens])
 
   return (
     <Layout>
-      <Header style={{padding: 0}} className='header'>
-        <img className='logos' src={Logo} alt="Logo" />
-        {/* <div className='logo'>
-          <img src={Logo} alt="Logo" />
-        </div> */}
-        <Menu mode='horizontal' defaultSelectedKeys={[menuItem]}>
-          <Menu.Item key='1' onClick={menuOnClick}>Home</Menu.Item>
-          <Menu.Item key='2' onClick={menuOnClick}>Projects</Menu.Item>
-          {/* <Menu.Item key='3' onClick={menuOnClick}>About</Menu.Item> */}
-        </Menu>
-      </Header>
-      {page}
+      {
+        screens.lg &&
+        <Header style={{padding: 0}} className='header'>
+          {MenuItems('horizontal')}
+        </Header>
+      }
+
       <Layout>
-        
-        {/* <Sider width={200} className='site-layout-background'>
-          <Menu
-            mode='inline'
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            style={{ height: '100%', borderRight: 0 }}
+        {
+          !screens.lg &&
+          <Sider
+            style={{background: '#fff', minHeight: '100vh' }}
+            breakpoint="md"
+            collapsedWidth="0"
           >
-              <Menu.Item key='1' icon={<UserOutlined />}>option1</Menu.Item>
-              <Menu.Item key='2' icon={<NotificationOutlined />} >option2</Menu.Item>
-              <Menu.Item key='3' icon={<LaptopOutlined />} >option3</Menu.Item>
-            <SubMenu key='sub2' icon={<LaptopOutlined />} title='subnav 2'>
-              <Menu.Item key='5'>option5</Menu.Item>
-              <Menu.Item key='6'>option6</Menu.Item>
-              <Menu.Item key='7'>option7</Menu.Item>
-              <Menu.Item key='8'>option8</Menu.Item>
-            </SubMenu>
-          </Menu>
-        </Sider> */}
+            {MenuItems('inline')}
+          </Sider>
+        }
+        <Layout style={{ padding: '0 24px 0 24px', minHeight: !screens.lg ? '100vh' : '93.5vh' }}>
+          {
+            screens.lg &&
+            <Breadcrumb style={{ margin: '16px 0' }}>
+              {breadCrumbs.map((item, index) => {
+                return (<Breadcrumb.Item key={index}>{item}</Breadcrumb.Item>)
+              })}
+            </Breadcrumb>
+          }
+          {page}
+        </Layout>
       </Layout>
     </Layout>
   );
