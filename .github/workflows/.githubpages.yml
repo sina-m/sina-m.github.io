@@ -30,7 +30,7 @@ jobs:
         npm run build
 
     - name: Archive
-      run: tar --dereference --hard-dereference --directory build/ -cvf artifact.tar .
+      run: tar --dereference --hard-dereference --directory public/ -cvf artifact.tar .
 
     - name: Upload artifact
       uses: actions/upload-artifact@main
