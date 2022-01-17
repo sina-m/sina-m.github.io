@@ -5,7 +5,7 @@ import { Layout, Menu, Breadcrumb, Grid } from 'antd';
 import { MenuInfo } from 'rc-menu/lib/interface';
 
 import { Home } from './pages/Home';
-import { Projects } from './pages/Projects/Projects';
+import { Projects } from './pages/projects/Projects';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 export enum Pages {
