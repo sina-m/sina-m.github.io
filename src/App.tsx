@@ -1,12 +1,10 @@
 import './App.css';
 
-import React, { useEffect, useState } from 'react';
-import { Layout, Menu, Breadcrumb, Grid } from 'antd';
-import { MenuInfo } from 'rc-menu/lib/interface';
+import React from 'react';
 
 import { Home } from './pages/Home';
 import { Projects } from './pages/projects/Projects';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 
 export enum Pages {
   Home = 'Home',
@@ -15,13 +13,13 @@ export enum Pages {
 
 export function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route index element={<Home />}/>
         <Route path='/home' element={<Home />}/>
         <Route path="/projects" element={<Projects />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
