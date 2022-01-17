@@ -2,6 +2,7 @@ import path from "path";
 import { Configuration } from "webpack";
 
 const config: Configuration = {
+  mode: 'production',
   module: {
     rules: [
       {
@@ -38,15 +39,15 @@ const config: Configuration = {
   resolve: {
     extensions: [".tsx", ".ts", ".js" ],
   },
+  entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "public"),
     filename: "bundle.js",
   },
-  devtool: 'inline-source-map',
-  entry: [
-    'webpack-hot-middleware/client?reload=true',
-    path.join(__dirname, 'src/index.tsx')
-  ],
+  performance: {
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
+  },
 };
 
 export default config;

@@ -3,10 +3,11 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { List, Avatar, Space, Button } from 'antd';
 import { GithubOutlined, GlobalOutlined } from '@ant-design/icons';
+import { Routes } from '../Page';
 
 
 interface ProjectProps {
-  setBreadCrumbs: React.Dispatch<React.SetStateAction<string[]>>;
+  setBreadCrumbs: React.Dispatch<React.SetStateAction<Routes[]>>;
   onClick: any;
   item: any;
 }
@@ -23,7 +24,7 @@ export function ProjectItem(props: ProjectProps): JSX.Element {
     <List.Item
       key={props.item.title}
       actions={[
-        <Button type="link" key="list-item-more" size={'large'} onClick={() => props.setBreadCrumbs(['Projects', props.item.title])}>
+        <Button type="link" key="list-item-more" size={'large'} onClick={() => props.setBreadCrumbs([Routes.Projects, props.item.title])}>
           <IconText icon={GithubOutlined} text={'0'}/>
         </Button>,
         <Button type="link" key="list-item-more" size={'large'} href={props.item.href}>
@@ -42,7 +43,7 @@ export function ProjectItem(props: ProjectProps): JSX.Element {
     >
       <List.Item.Meta
         avatar={<Avatar src={props.item.avatar} size={'large'}/>}
-        title={<a onClick={() => { props.setBreadCrumbs(['Projects', props.item.title]), props.onClick(props.item.title)}}>{props.item.title}</a>}
+        title={<a onClick={() => { props.setBreadCrumbs([Routes.Projects, props.item.title]), props.onClick(props.item.title)}}>{props.item.title}</a>}
         description={props.item.description}
       />
       {props.item.content}
